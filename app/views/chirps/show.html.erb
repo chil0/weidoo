@@ -1,0 +1,26 @@
+<p>
+  <strong>User:</strong>
+  <%= @chirp.user.email %>
+  <br />
+  <strong>Chirp:</strong>
+  <%= @chirp.chirp %>
+  <br />
+  <strong>Chirped at:</strong>
+  <%= @chirp.chirped_at %>
+</p>
+
+<p>
+  <% if @chirp.photo %>
+    <strong>Photo:</strong>
+    <% if @chirp.file_type =~ /^image\/.*?(png|jpeg|gif|bmp)$/ %>
+      <%= image_tag url_for({:action => 'photo', :id => @chirp.id,
+         :filename => @chirp.file_name} ), :alt => @chirp.file_name %>
+    <% end %>
+  <% end %>
+</p>
+
+<p> 
+</p>
+
+<%= link_to 'Edit', edit_chirp_path(@chirp) %> |
+<%= link_to 'Back', chirps_path %>
