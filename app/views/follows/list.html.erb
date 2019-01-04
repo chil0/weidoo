@@ -1,0 +1,39 @@
+<h1>Follows List</h1>
+
+<% if @message %>
+  <h2><%= @message %></h2>
+<% end %>
+
+
+<table border="1">
+<% @users.each do |user| %>
+  <tr>
+    <td>
+      <% if user.face %>
+        <% if user.face.content_type =~ /^image\/.*?(png|jpeg|gif)$/ %>
+           <%= image_tag url_for({:controller => 'chirps', :action => 'face', :id=> user.face.id,
+                :filename => user.face.name}), :alt => user.face.name
+              %>
+        <% else %>
+           <%= image_tag 'default_face.png', :alt => user.face.name %>
+        <% end %>
+      <% else %>
+           <%= image_tag 'default_face.png', :alt => 'No Name' %>
+      <% end %>
+    </td>
+    <td><%= user.handle_name %></td>
+    <td><%= user.email %></td>
+    <td>
+    <% if @follows && (follow = @follows.find {|follow| follow.to_id == user.id }) %>
+      <%= form_tag "/follows/cancel/"+follow.id.to_s, :method => 'put' do %>
+        <%= submit_tag "Stop Follow", :name => "Cancel" %>
+      <% end %>
+    <% else %>
+      <%= form_tag "/follows/follow/"+user.id.to_s, :method => 'put' do %>
+        <%= submit_tag "Follow", :name => "Follow" %>
+      <% end %>
+    <% end %>
+  </td>
+  </tr>
+<% end %>
+</table>

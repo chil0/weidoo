@@ -1,0 +1,12 @@
+<p>
+  <strong>My face photo:</strong>
+  <% if @user.face %>
+    <% face = @user.face %>
+    <% if face.content_type =~ /^image\/.*?(png|jpeg|gif|bmp)$/ %>
+      <%= image_tag url_for({:action => 'face', :id=> face.id,
+          :filename => face.name}), :alt => face.name %>
+    <% end %>
+  <% else %>
+    <%= image_tag 'default_face.png', :alt => 'No Photo' %>
+  <% end %>
+</p>

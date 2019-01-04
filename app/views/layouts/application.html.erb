@@ -10,8 +10,29 @@
   </head>
 
   <body>
-    <p class="notice" id="notice"><%= notice %></p>
-    <p class="alert" id="alert"><%= alert %></p>
-    <%= yield %>
+    <div id="container">
+      <div id="header">
+      <%= image_tag "banner2018.gif", :size => '800x157' %>
+      <%= render :partial => "shared/menu_bar" %>
+        <div id="showRightBtn">
+          <br />
+          <a href="#" data-right-menu="ON" class="btn btn-default">
+            <%= "Show Right Bar" %>
+          </a><br />
+        </div>
+      </div>
+
+      <div id="left">
+        <%= yield %>
+      </div>
+      <div id="right">
+        <%= render :partial => "shared/right_bar" %>
+      </div> <div id="footer">
+        <%= render :partial => "shared/footer" %>
+      </div>
+
+      <p class="notice" id="notice"><%= notice %></p>
+      <p class="alert" id="alert"><%= alert %></p>
+    </div>
   </body>
 </html>

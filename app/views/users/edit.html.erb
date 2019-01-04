@@ -1,11 +1,10 @@
 <h1>Editing User</h1>
 
 <% if session[:back_to_home] %>
-  Welcome! Now you joined to our Chirps Site.<br />
+  Welcome!  Now you joined to our Chirps Site.<br />
   First, register your <font color="blue">Handle Name</font>!<br />
 <% end %>
 
 <%= render 'form', user: @user %>
 
-<%= link_to 'Show', @user %> |
-<%= link_to 'Back', users_path %>
+<%= link_to 'Back', chirps_path %>

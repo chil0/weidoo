@@ -1,0 +1,11 @@
+<h1>Register Face Photo</h1>
+
+<%= form_for @face, :url => "/faces/update",
+		:html => {:multipart => true}, :method => :put do %>
+  <h2>User: <%= @user.handle_name %></h2>
+  <div class="field">
+    Face Photo:
+    <%= file_field :file, :upload %>
+  </div>
+  <div><%= submit_tag "Update" %></div>
+<% end %>

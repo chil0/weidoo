@@ -8,13 +8,26 @@ class ChirpsController < ApplicationController
   # GET /chirps.json
   def index
     # This is the main entrance, after 'log-in'
-    if current_user and current_user.handle_name.blank?
-      session[:back_to_home] = true
-      redirect_to edit_user_path(current_user.id)
-    else
-      @chirps = Chirp.all
+    ##if current_user and current_user.handle_name.blank?
+    ##  session[:back_to_home] = true
+    ##  redirect_to edit_user_path(current_user.id)
+    ##else
+    ##  @chirps = Chirp.all
+    ##end
+    if current_user
+      if (current_user.handle_name == nil ||
+          current_user.handle_name.length == 0)
+          session[:back_to_home] = true
+          redirect_to edit_user_path(current_user)
+      end
     end
+    @follows = Follow.where( user_id: current_user.id )
+    @users = @follows.collect { |f| f.to_id }
+    @users << current_user.id
+    @chirps = Chirp.select{|c| @users.include?( c.user_id )}
+    @chirps = @chirps.sort_by{ |c| c[:created_at] }.reverse
   end
+
 
   # GET /chirps/1
   # GET /chirps/1.json
@@ -105,6 +118,13 @@ class ChirpsController < ApplicationController
     send_data @chirp.photo, :filename => @chirp.file_name,
      :type => @chirp.file_type
   end
+
+  def face
+    face = Face.find( params[:id] )
+    send_data face.content, :filename => face.name,
+      :type=>face.content_type
+  end
+
 
   private
     # Use callbacks to share common setup or constraints between actions.

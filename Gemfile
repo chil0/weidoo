@@ -29,6 +29,9 @@ gem 'jbuilder', '~> 2.5'
 gem 'devise'
 gem 'twitter-bootstrap-rails'
 gem 'jquery-rails'
+
+gem 'jquery-ui-rails'
+
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 

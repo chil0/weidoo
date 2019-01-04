@@ -12,4 +12,43 @@
  *
  *= require_tree .
  *= require_self
+ *= require jquery-ui
  */
+
+ div#container {
+ background-color: #FFFFF0;
+ margin: 0 auto;
+ padding: 5px 0 0;
+ width: 800px;
+}
+
+div#header {
+ background-color: #FFC125;
+ padding-top: 4px;
+ border-top: 4px solid #6bb;
+}
+
+div#left {
+ float: left;
+ width: 590px;
+ background-color: #FFFFF0;
+ padding: 6px 6px 6px 0;
+}
+
+div#right {
+float: right;
+width: 190px;
+background-color: #FFEC8B;
+}
+
+div#footer {
+background-color: #FFFFF0;
+border-top: 2px #6bb solid ;
+text-align: center;
+clear: both;
+width: 100%;
+}
+
+div#menu_bar{
+color: black;
+}

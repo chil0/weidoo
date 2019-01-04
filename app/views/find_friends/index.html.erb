@@ -1,0 +1,15 @@
+<h1>Find Friends</h1>
+
+<%= form_for @user, :url=>"/find_friends/search", :method=>:put do |f| %>
+  <div><%= f.label :email %><br />
+  <%= f.email_field :email %></div>
+
+  <div><%= f.label :handle %><br />
+  <%= f.text_field :handle_name %></div>
+
+  <div>
+    <%= f.submit 'Search' %>
+  </div>
+<% end %>
+
+<%= link_to 'Back', chirps_path %>
