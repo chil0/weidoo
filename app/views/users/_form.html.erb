@@ -1,3 +1,14 @@
+<%= form_for @face, :url => "/faces/update",
+    :html => {:multipart => true}, :method => :put do %>
+  <div class="field">
+    Face Photo:
+  <%= file_field :file, :upload %>
+  </div>
+  <div><%= submit_tag "Upload Photo" %></div>
+<% end %>
+
+<hr />
+
 <%= form_with(model: user, local: true) do |form| %>
   <% if user.errors.any? %>
     <div id="error_explanation">
@@ -10,17 +21,6 @@
       </ul>
     </div>
   <% end %>
-
-  <hr />
-  <%= form_for @face, :url => "/faces/update",
-  		:html => {:multipart => true}, :method => :put do %>
-    <div class="field">
-      Face Photo:
-  	<%= file_field :file, :upload %>
-    </div>
-    <div><%= submit_tag "Upload Photo" %></div>
-  <% end %>
-
 
   <div class="field">
     <%= form.label :email %>

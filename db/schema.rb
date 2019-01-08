@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_28_155934) do
+ActiveRecord::Schema.define(version: 2019_01_06_062828) do
 
   create_table "chirps", force: :cascade do |t|
     t.integer "user_id"
@@ -19,6 +19,14 @@ ActiveRecord::Schema.define(version: 2018_12_28_155934) do
     t.string "file_name"
     t.string "file_type"
     t.datetime "chirped_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "comments", force: :cascade do |t|
+    t.integer "weidoo_id"
+    t.string "commenter"
+    t.text "body"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

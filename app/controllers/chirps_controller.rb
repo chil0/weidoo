@@ -8,7 +8,7 @@ class ChirpsController < ApplicationController
   # GET /chirps.json
   def index
     # This is the main entrance, after 'log-in'
-    ##if current_user and current_user.handle_name.blank?
+    #if current_user and current_user.handle_name.blank?
     ##  session[:back_to_home] = true
     ##  redirect_to edit_user_path(current_user.id)
     ##else
@@ -123,6 +123,11 @@ class ChirpsController < ApplicationController
     face = Face.find( params[:id] )
     send_data face.content, :filename => face.name,
       :type=>face.content_type
+  end
+
+  def comment
+    @chirp = Chirp.find( params[:id] )
+    send_data @chirp.comment
   end
 
 

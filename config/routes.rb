@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
+  get 'comments/index'
+  put 'comments/search'
+
   get 'search_chirps/index'
   put 'search_chirps/search'
-  
+
   get "find_friends/index"
   put "find_friends/search"
 
@@ -14,7 +17,8 @@ Rails.application.routes.draw do
 
   put "faces/update" => "faces#update"
   get 'faces/register'
-  ##get "users/face" => "users#face"
+
+##  get "users/face" => "users#face"
 #  put "faces/register"
 
   devise_for :users
@@ -30,6 +34,7 @@ Rails.application.routes.draw do
   resources :chirps do
     get 'face', to: 'chirps#face', on: :collection
     get 'photo', to: 'chirps#photo', on: :collection
+    resources :comments
   end
   root :to => 'chirps#index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

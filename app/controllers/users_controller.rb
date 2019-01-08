@@ -4,6 +4,7 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   def index
+    # This is the main entrance, after 'log-in'
     @users = User.all
   end
 

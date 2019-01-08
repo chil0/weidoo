@@ -1,10 +1,11 @@
 <% menu_items = [
-  { :link => chirps_path, :name => "Chirps List" },
-  { :link => new_chirp_path, :name => "New Chirp" },
+  { :link => chirps_path, :name => "Weidoo List" },
+  { :link => new_chirp_path, :name => "New Weidoo" },
   { :link => follows_list_path, :name => 'Follow List' },
   { :link => find_friends_index_path, :name => 'Find Friends' },
   { :link => 'https://github.com/chil0/weidoo', :name => 'About This Page' },
-  { :link => search_chirps_index_path, :name => 'find chirp' }
+  { :link => search_chirps_index_path, :name => 'Find Weidoo' },
+  { :link => comments_index_path, :name => 'Comments List' }
 ] -%>
 <div id="menu_bar">
   <% menu_items.each_with_index do | item, index | -%>

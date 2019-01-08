@@ -2,6 +2,7 @@ class CreateChirps < ActiveRecord::Migration[5.2]
   def change
     create_table :chirps do |t|
       t.integer :user_id
+      t.integer :chirp_id
       t.string :chirp
       t.binary :photo
       t.string :file_name
